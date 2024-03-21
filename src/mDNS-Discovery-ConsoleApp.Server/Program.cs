@@ -2,6 +2,8 @@
 using System.Net;
 using System.Net.Sockets;
 
+// ptr aaa etc:https://github.com/karlredgate/mDNS-sharp/blob/master/mDNS.cs
+
 // server 发起查询的主机   Start MDNS server.
 namespace mDNS_Discovery_ConsoleApp.Server
 {
