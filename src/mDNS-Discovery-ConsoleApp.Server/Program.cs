@@ -2,8 +2,8 @@
 using System.Net;
 using System.Net.Sockets;
 
-// server 发起查询的主机
-namespace mDNS_Discovery_ConsoleApp
+// server 发起查询的主机   Start MDNS server.
+namespace mDNS_Discovery_ConsoleApp.Server
 {
     internal class Program
     {
@@ -16,6 +16,17 @@ namespace mDNS_Discovery_ConsoleApp
             {
                 Console.WriteLine($"IP address {a}");
             }
+
+            //   Find all services running on the local link.
+
+            var sd1 = new ServiceDiscovery();
+            sd1.ServiceDiscovered += (s, serviceName) =>
+            {
+                // Do something
+
+                Console.WriteLine($"all services running on the local link {serviceName} \n");
+
+            };
 
 
 
@@ -33,21 +44,21 @@ namespace mDNS_Discovery_ConsoleApp
                     .Distinct();
                 Console.WriteLine($"got answer for {String.Join(", ", names)} \n");
             };
+
             mdns.NetworkInterfaceDiscovered += (s, e) =>
             {
                 foreach (var nic in e.NetworkInterfaces)
                 {
                     Console.WriteLine($"discovered NIC '{nic.Name}\n'");
                 }
+
+
             };
 
-            var sd = new ServiceDiscovery(mdns);
-            sd.Advertise(new ServiceProfile("ipfs1", "_ipfs-discovery._udp", 5010));
-            sd.Advertise(new ServiceProfile("x1", "_xservice._tcp", 5011));
-            sd.Advertise(new ServiceProfile("x2", "_xservice._tcp", 666));
-            var z1 = new ServiceProfile("z1", "_zservice._udp", 5012);
-            z1.AddProperty("foo", "bar");
-            sd.Advertise(z1);
+            mdns.NetworkInterfaceDiscovered += (s, e)
+               => mdns.SendQuery(ServiceDiscovery.ServiceName, type: DnsType.PTR);
+
+
 
             mdns.Start();
             Console.ReadKey();
@@ -55,3 +66,4 @@ namespace mDNS_Discovery_ConsoleApp
         }
     }
 }
+

@@ -8,9 +8,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mDNS-Discovery-ConsoleApp", "src\mDNS-Discovery-ConsoleApp\mDNS-Discovery-ConsoleApp.csproj", "{3D1C526B-AB19-4E0A-8931-00ED240FCC30}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mDNS-Discovery-ConsoleApp.Clent", "src\mDNS-Discovery-ConsoleApp.Clent\mDNS-Discovery-ConsoleApp.Clent.csproj", "{DA60D6D9-557D-4253-A8E7-07CE3ED17684}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mDNS-Discovery-ConsoleApp.Server", "src\mDNS-Discovery-ConsoleApp.Server\mDNS-Discovery-ConsoleApp.Server.csproj", "{3CBDD48F-34FF-4A4C-9E81-2E071A572611}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mDNS-Discovery-ConsoleApp.Client", "src\mDNS-Discovery-ConsoleApp.Client\mDNS-Discovery-ConsoleApp.Client.csproj", "{924BBB80-A440-455C-8342-0E68F1D5DD5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,14 +20,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3D1C526B-AB19-4E0A-8931-00ED240FCC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D1C526B-AB19-4E0A-8931-00ED240FCC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D1C526B-AB19-4E0A-8931-00ED240FCC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D1C526B-AB19-4E0A-8931-00ED240FCC30}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DA60D6D9-557D-4253-A8E7-07CE3ED17684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DA60D6D9-557D-4253-A8E7-07CE3ED17684}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA60D6D9-557D-4253-A8E7-07CE3ED17684}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA60D6D9-557D-4253-A8E7-07CE3ED17684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CBDD48F-34FF-4A4C-9E81-2E071A572611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CBDD48F-34FF-4A4C-9E81-2E071A572611}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CBDD48F-34FF-4A4C-9E81-2E071A572611}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CBDD48F-34FF-4A4C-9E81-2E071A572611}.Release|Any CPU.Build.0 = Release|Any CPU
+		{924BBB80-A440-455C-8342-0E68F1D5DD5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{924BBB80-A440-455C-8342-0E68F1D5DD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{924BBB80-A440-455C-8342-0E68F1D5DD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{924BBB80-A440-455C-8342-0E68F1D5DD5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
