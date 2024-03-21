@@ -61,6 +61,7 @@ namespace mDNS_Discovery_ConsoleApp.Client
                 }
             };
 
+            //接收所有的广播，代码如下：
             mdns.QueryReceived += QueryReceived;
 
             mdns.Start();
