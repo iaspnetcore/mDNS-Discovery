@@ -8,7 +8,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mDNS-Discovery-ConsoleApp", "src\mDNS-Discovery-ConsoleApp\mDNS-Discovery-ConsoleApp.csproj", "{3D1C526B-AB19-4E0A-8931-00ED240FCC30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mDNS-Discovery-ConsoleApp.Clent", "src\mDNS-Discovery-ConsoleApp.Clent\mDNS-Discovery-ConsoleApp.Clent.csproj", "{DA60D6D9-557D-4253-A8E7-07CE3ED17684}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D1C526B-AB19-4E0A-8931-00ED240FCC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D1C526B-AB19-4E0A-8931-00ED240FCC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D1C526B-AB19-4E0A-8931-00ED240FCC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D1C526B-AB19-4E0A-8931-00ED240FCC30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA60D6D9-557D-4253-A8E7-07CE3ED17684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA60D6D9-557D-4253-A8E7-07CE3ED17684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA60D6D9-557D-4253-A8E7-07CE3ED17684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA60D6D9-557D-4253-A8E7-07CE3ED17684}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
