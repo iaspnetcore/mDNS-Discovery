@@ -9,6 +9,7 @@ namespace mDNS_Discovery_ConsoleApp.Server
 {
     internal class Program
     {
+        static readonly object ttyLock = new object();
         static void Main(string[] args)
         {
 
@@ -16,7 +17,7 @@ namespace mDNS_Discovery_ConsoleApp.Server
 
             foreach (var a in MulticastService.GetIPAddresses())
             {
-                Console.WriteLine($"IP address {a}");
+                Console.WriteLine($"Program.cs ->IP address {a}");
             }
 
             //   Find all services running on the local link.
@@ -30,14 +31,20 @@ namespace mDNS_Discovery_ConsoleApp.Server
 
             };
 
-
-
-            mdns.QueryReceived += (s, e) =>
+            //Find all service instances running on the local link.
+            //https://github.com/richardschneider/net-mdns
+            sd1.ServiceInstanceDiscovered += (s, e) =>
             {
-                var names = e.Message.Questions
-                    .Select(q => q.Name + " " + q.Type);
-                Console.WriteLine($"got a query for {String.Join(", ", names)} \n");
+                //if (e.Message.Answers.All(w => !w.Name.ToString().Contains("ipfs1"))) return;
+                Console.WriteLine($"Find all service instances running on the local link '{e.ServiceInstanceName}'");
+
+                // Ask for the service instance details.
+                mdns.SendQuery(e.ServiceInstanceName, type: DnsType.SRV);
             };
+
+
+
+          
 
             mdns.AnswerReceived += (s, e) =>
             {
@@ -46,6 +53,9 @@ namespace mDNS_Discovery_ConsoleApp.Server
                     .Distinct();
                 Console.WriteLine($"got answer for {String.Join(", ", names)} \n");
             };
+
+            mdns.QueryReceived += AnswerReceived;
+
 
             mdns.NetworkInterfaceDiscovered += (s, e) =>
             {
@@ -63,9 +73,52 @@ namespace mDNS_Discovery_ConsoleApp.Server
 
 
             mdns.Start();
+
+            MulticastService_GetIPAddresses();
+
             Console.ReadKey();
 
         }
+
+        /// <summary>
+        /// 收到mDNS查询请求后的回答
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void AnswerReceived(object sender, MessageEventArgs e)
+        {
+
+
+            lock (ttyLock)
+            {
+                var names = e.Message.Answers
+                   .Select(q => q.Name + " " + q.Type);
+                Console.WriteLine($"Answer Received for {String.Join(", ", names)} \n");
+
+                Console.WriteLine("detail === {0:O} ===", DateTime.Now);
+                Console.WriteLine(e.Message.ToString());
+
+
+            }
+        }
+
+
+        #region test MulticastService
+
+        /// <summary>
+        /// https://github.com/SteeBono/airplayreceiver/blob/806fd39ef263a2b38bdd7c8e636a9fd804a94c4e/AirPlay/AirPlayReceiver.cs#L66
+        /// </summary>
+        public static void MulticastService_GetIPAddresses()
+        {
+            foreach (var ip in MulticastService.GetIPAddresses())
+            {
+                Console.WriteLine($"MulticastService_GetIPAddresses() ->IP address {ip}");
+            }
+        }
+
+        #endregion
+
     }
 }
 

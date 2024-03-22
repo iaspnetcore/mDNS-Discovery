@@ -13,9 +13,13 @@ namespace mDNS_Discovery_ConsoleApp.Client
         static void Main(string[] args)
         {
 
+
+            #region Advertising
+            //https://github.com/richardschneider/net-mdns
+
             var mdns = new MulticastService();
 
-            /*  Broadcasting
+            /*  Advertise
              *  在加入网络时都会发 IGMP 报文加入组 224.0.0.251
                         //Advertising
                         //Always broadcast the service("foo") running on local host with port 1024.
@@ -29,6 +33,7 @@ namespace mDNS_Discovery_ConsoleApp.Client
             z1.AddProperty("foo", "bar");
             sd.Advertise(z1);
 
+            #endregion
 
 
             /* Respond to a query for the service
