@@ -23,14 +23,24 @@ namespace mDNS_Discovery_ConsoleApp.Client
              *  在加入网络时都会发 IGMP 报文加入组 224.0.0.251
                         //Advertising
                         //Always broadcast the service("foo") running on local host with port 1024.
+
+            https://iotespresso.com/how-to-discover-esp32-service-over-mdns/
+            We will essentially make an ESP32 tell the other devices on the network: 
+            “Hey, I’m <name>. My IP address is <ip>. I provide the following services: <service_name> + <protocol (tcp/udp)>. Let’s connect”.
+
+            ServiceProfile =>(instanceName,  serviceName, ushort port)
+
+
+            2.we broadcast a service offering to anyone who discovers this device.
              */
 
             var sd = new ServiceDiscovery(mdns);
             sd.Advertise(new ServiceProfile("ipfs1", "_mDNSClientipfs-discovery._udp", 5010));
             sd.Advertise(new ServiceProfile("x1", "_mDNSClientxservice._tcp", 5011));
-            sd.Advertise(new ServiceProfile("x2", "_mDNSClientxservice._tcp", 666));
+            sd.Advertise(new ServiceProfile("vmdevice", "_hap._tcp.local", 666));
             var z1 = new ServiceProfile("z1", "_mDNSClientzservice._udp", 5012);
             z1.AddProperty("foo", "bar");
+            // 开启广播
             sd.Advertise(z1);
 
             #endregion
@@ -42,7 +52,7 @@ namespace mDNS_Discovery_ConsoleApp.Client
             所有收到请求的设备都会检查他们是否对应请求中的主机名。如果一个设备发现它对应了请求中的主机名，它就会响应请求，回复它的IP地址。
             */
 
-            var service1 = "...";
+            var service1 = "_mDNSClientipfs-discovery._udp";
 
             mdns.QueryReceived += (s, e) =>
             {
