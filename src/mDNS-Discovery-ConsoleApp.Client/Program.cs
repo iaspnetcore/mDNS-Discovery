@@ -37,7 +37,7 @@ namespace mDNS_Discovery_ConsoleApp.Client
             var sd = new ServiceDiscovery(mdns);
             sd.Advertise(new ServiceProfile("ipfs1", "_mDNSClientipfs-discovery._udp", 5010));
             sd.Advertise(new ServiceProfile("x1", "_mDNSClientxservice._tcp", 5011));
-            sd.Advertise(new ServiceProfile("vmdevice", "_hap._tcp.local", 666));
+            sd.Advertise(new ServiceProfile("_mDNS_Discovery_ConsoleApp_Client", "_mDNS_Discovery_ConsoleApp_Client._tcp", 666));
             var z1 = new ServiceProfile("z1", "_mDNSClientzservice._udp", 5012);
             z1.AddProperty("foo", "bar");
             // 开启广播

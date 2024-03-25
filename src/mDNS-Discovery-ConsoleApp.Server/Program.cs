@@ -1,5 +1,6 @@
 ﻿using Makaretu.Dns;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
 // ptr aaa etc:https://github.com/karlredgate/mDNS-sharp/blob/master/mDNS.cs
@@ -16,10 +17,20 @@ namespace mDNS_Discovery_ConsoleApp.Server
 
             var mdns = new MulticastService();
 
+            var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+
+            foreach (var network in networkInterfaces)
+            {
+                Console.WriteLine(
+                    $"Interface {network.Name}, Type {network.NetworkInterfaceType}, OP Status {network.OperationalStatus}, IP {network.GetIPProperties().UnicastAddresses.FirstOrDefault()}");
+            }
+
             foreach (var a in MulticastService.GetIPAddresses())
             {
                 Console.WriteLine($"Program.cs ->IP address {a}");
             }
+
+           
 
             //   Find all services running on the local link.
 
@@ -37,7 +48,9 @@ namespace mDNS_Discovery_ConsoleApp.Server
             sd1.ServiceInstanceDiscovered += (s, e) =>
             {
                 //if (e.Message.Answers.All(w => !w.Name.ToString().Contains("ipfs1"))) return;
-                Console.WriteLine($"Find all service instances running on the local link '{e.ServiceInstanceName}'");
+
+                //Typically of the form "instance._service._tcp.local
+                Console.WriteLine($"{DateTime.Now} Find all service instances running on the local link,Typically of the form instance._service._tcp.local '{e.ServiceInstanceName}'");
 
                 // Ask for the service instance details.
                 mdns.SendQuery(e.ServiceInstanceName, type: DnsType.SRV);
