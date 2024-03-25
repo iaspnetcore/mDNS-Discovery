@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mDNS-Discovery-ConsoleApp.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mDNS-Discovery-ConsoleApp.Client", "src\mDNS-Discovery-ConsoleApp.Client\mDNS-Discovery-ConsoleApp.Client.csproj", "{924BBB80-A440-455C-8342-0E68F1D5DD5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatterXiaomi.HomeKit.Bonjour", "src\MatterXiaomi.HomeKit.Bonjour\MatterXiaomi.HomeKit.Bonjour.csproj", "{896F90EA-9383-4A2F-9391-62695B1268EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{924BBB80-A440-455C-8342-0E68F1D5DD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{924BBB80-A440-455C-8342-0E68F1D5DD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{924BBB80-A440-455C-8342-0E68F1D5DD5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{896F90EA-9383-4A2F-9391-62695B1268EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{896F90EA-9383-4A2F-9391-62695B1268EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{896F90EA-9383-4A2F-9391-62695B1268EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{896F90EA-9383-4A2F-9391-62695B1268EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
