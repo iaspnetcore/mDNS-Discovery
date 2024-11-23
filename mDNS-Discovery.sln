@@ -5,6 +5,7 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{50F0E4FE-44A0-4886-8E2F-64A807DEB3D5}"
 	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
 		src\README.md = src\README.md
 		README.md = README.md
 	EndProjectSection
