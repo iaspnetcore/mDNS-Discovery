@@ -7,6 +7,8 @@ using System.Net.Sockets;
 
 // server 发起查询的主机   Start MDNS server.  Find Device 
 
+
+
 namespace mDNS_Discovery_ConsoleApp.Server
 {
     internal class Program

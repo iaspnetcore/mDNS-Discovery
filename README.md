@@ -1,6 +1,7 @@
 ﻿
 
 local:F:\developer_mDNS\src\mDNS-Discovery-ConsoleApp.Server
+
 remote:https://github.com/iaspnetcore/mDNS-Discovery
 
 {
